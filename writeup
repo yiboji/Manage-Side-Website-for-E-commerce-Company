@@ -1,0 +1,81 @@
+name: YiboJi   
+USCID: 8317398887 
+Email: yiboji@usc.edu Homework 
+link: http://cs-server.usc.edu:62526/src/login.php
+
+1. introduction:
+    My homework2 is about Electronic products which are earphones, headphones and music system. Employees can login in the system and do many operations bases on their duty. 
+
+2. How to login:
+User 1: username: sgou      password:0000     type:Manager
+User 2: username: yiboji    password:0000     type:Administrator
+User 3: username: ruoyu     password:0000     type:Sale Manager
+
+3. Database Information: 
+   allusers table: 
+   1. userindex: the id of all the users int(11),  type:not null, PRIMARY KEY, auto-incremental                                                                                                                                       
+   2. username:  the name of users,  type:text                                                                                                                
+   3. password: User' password for login,  type: text 
+   4. firstname: the first name of users,   type:text               
+   5. lastname: the lastname users,   type:text 
+   6. age: the age of users,  type: int(11)                                                                                                                                      
+   7. usertype: can be Administrator,   Manager, Sales Manager.  type: text                                                                                                                                
+   8. pay: the payment of users,  type: int (11)                            
+   9.employeeimg: the photo of users, type: text
+
+   product table: 
+   1. productID: the id of all the users,  type:int(11), not null, PRIMARY KEY, auto-incremental.
+   2.productcategoryID: the category id of products,  type:int(11)
+   3. productname: products’ name,  type: text 
+   4. description: the description of products,   type:text               
+   5. pricerange: the price range of products,   type:int(11) 
+   6. productimg: the image of products,  type: text                  
+
+   product category table: 
+   1. productcategoryID: the id of product category,  type:int(11), not null 
+   2. categoryname: the category name of products,  type:text
+   3. categorydescription: the description of product category,  type: text                                                                                                 
+
+   specialsale table: 
+   1. productID: the id of products in specialsale,  type:int(11), not null 
+   2. discount: the discount of products,  type:int(11)
+   3. startdate: the start date of special sales,  type:date 
+   4. enddate: the end date of special sales,   type:date     
+
+4. Function 
+    1. For log in: my website can detect log in error 
+    2. Time out: I set the time out time as 3600 seconds, if the user never do anything for 3600 seconds, the page will reture to the login page and output a error on it. 
+    2. There are three type of user, after login in, they will go to 3 different home pages. 
+    3. Search function: Every type of user can use search function. for sale manager and administrator, they can search text information like username, usertype, description all in one place. For manager, I made a dynamic list, so that manager can search by select what type of infomation they want to search which is more convenient for manager to search. 
+    4. I made validation for administrator and sale manager. for administrator, when adding or modifying data, they can only enter certain type.for example, username, firstname, lastname can only be word. age and price can only be number, and all field must be filled up. for sale manager, the price and discount must be number and special sale table is not required for submission. If any error in these field, the title of these field will be marked as red color and form will not be submitted to server side.  
+    5. For manager page, I show all information as a gallery. When manager want to know detail information about one product or a employee, just move mouse over that image, so the text information will be displayed. He can also scroll up and down for more images.
+5. Files structure: 
+    For Log in:
+        login.php
+        logout.php
+        prelogin.html
+        postlogin.html
+    for administrator page:
+        administrator.php
+        adduser.php
+        adduser.html
+        changeuser.php
+        changeuser.html
+        deleteuser.php
+        searchuser.php
+    for sale manager page:
+        salamanager.php
+        addproduct.php
+        addproduct.html
+        changeproduct.html
+        changeproduct.php
+        deleteproduct.php
+        removespecial.php
+        categoryproduct.php
+        specialsale.php
+    for manager page:
+        manager.php
+        managersearch.php
+        specialpage.php
+        productpage.php
+        userpage.php

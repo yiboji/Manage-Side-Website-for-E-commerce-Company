@@ -1,0 +1,66 @@
+<form action="changeproduct.php?change=<?php echo $productID; ?>" onsubmit="return checkform();" method="POST" enctype="multipart/form-data">
+    <div style="width:50%;text-align:center;">
+        <table>
+            <tr>
+                <td>Product Name:</td>
+                <td><input type="text" name="productname" value="<?php echo $productname; ?>" required/></td>
+            </tr>
+            <tr>
+                <td id="productcategory">Product Category:</td>
+                <td>
+                    <select name="productcategory">
+                        <option value="<?php echo $categoryid; ?>">
+                            <?php $sql="select * from productcategory where productcategoryID='$categoryid'";
+                                $result= mysql_query($sql)
+                                    or die('Invalid query for productcategory');
+                                $caterow = mysql_fetch_array($result);
+                                echo $caterow['categoryname'];
+                             ?>
+                        </option>
+                        <option value="1">Headphones</option>
+                        <option value="2">Speakers</option>
+                        <option value="3">Home Theater</option>
+                        <option value="4">Wave System</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Description: </td>
+                <td><input type="text" name="description" value="<?php echo $description; ?>" required/></td>
+            </tr>
+            <tr>
+                <td id="price">Price: </td>
+                <td>
+                    $<input type="number" name="pricerange" step="10" min="0" max="2000" value="<?php echo $pricerange; ?>" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Product Image: </td>
+                <td><img style="width:70px;height:70px" src="<?php echo $filepath; ?>">
+                    <input type="file" name="file"/></td>
+            </tr>
+        </table>
+    </div>
+    <div style="position:absolute; left:7%;top:43%;">
+        <table>
+            <caption>Special Sale</caption>
+            <tr>
+                <td>Discount</td>
+                <td><input type="number" name="discount" step="10" min="0" max="100"
+                           value="<?php echo $discount; ?>"/></td>
+            </tr>
+            <tr>
+                <td>Start Date</td>
+                <td><input type="date" name="startdate" value="<?php echo $startdate; ?>"/></td>
+            </tr>
+            <tr>
+                <td>End Date</td>
+                <td><input type="date" name="enddate" value="<?php echo $enddate; ?>"/></td>
+            </tr>
+        </table>
+    </div>
+    <div style="position:absolute;left:11%;top:63%;">
+        <input style="font-size:100%" type="submit" name="finishchange" value="save"/>
+        <input style="font-size:100%" type="button" onclick="location.href='salamanager.php'" name="cancel" value="cancel"/>
+    </div>
+</form>
